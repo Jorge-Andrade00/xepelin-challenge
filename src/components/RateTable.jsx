@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { getRates } from "../data/ratesData";
 import Modal from "./Modal";
 
-const RateTable = () => {
+const RateTable = ({ user }) => {
   const [loading, setLoading] = useState(true);
   const [rates, setRates] = useState([]);
   const [selectedRate, setSelectedRate] = useState({});
@@ -46,7 +46,7 @@ const RateTable = () => {
                 <th scope="col">Id</th>
                 <th scope="col">Tasa</th>
                 <th scope="col">Email</th>
-                <th scope="col">Accion</th>
+                {user.exists && <th scope="col">Accion</th>}
               </tr>
             </thead>
             <tbody>
@@ -56,18 +56,20 @@ const RateTable = () => {
                     <th scope="row">{elem.opId}</th>
                     <td>{elem.rate}</td>
                     <td>{elem.email}</td>
-                    <td>
-                      <button
-                        type="button"
-                        class="btn btn-primary"
-                        onClick={() => {
-                          selectRate(elem.opId);
-                          setModalOpen(true);
-                        }}
-                      >
-                        Editar
-                      </button>
-                    </td>
+                    {user.exists && (
+                      <td>
+                        <button
+                          type="button"
+                          class="btn btn-primary"
+                          onClick={() => {
+                            selectRate(elem.opId);
+                            setModalOpen(true);
+                          }}
+                        >
+                          Editar
+                        </button>
+                      </td>
+                    )}
                   </tr>
                 );
               })}

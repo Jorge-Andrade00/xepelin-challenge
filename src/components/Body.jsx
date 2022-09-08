@@ -1,10 +1,10 @@
 import React from "react";
 import RateTable from "./RateTable";
 
-const Body = () => {
+const Body = ({ user }) => {
   return (
     <div className="container">
-      <RateTable />
+      <RateTable user={user} />
     </div>
   );
 };

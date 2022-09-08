@@ -1,8 +1,10 @@
-import React from "react";
+import { useState } from "react";
 import "../assets/styles/modal.css";
 import { updateRates } from "../data/ratesData";
 
 function Modal({ setOpenModal, selectedRate, setSelectedRate }) {
+  const [emailInput, setEmailInput] = useState(false);
+  const [rateInput, setRateInput] = useState(false);
   return (
     <div className="modalBackground">
       <div className="modalContainer position-absolute top-50 start-50 translate-middle">
@@ -30,9 +32,10 @@ function Modal({ setOpenModal, selectedRate, setSelectedRate }) {
                   type="text"
                   class="form-control"
                   value={selectedRate.email}
-                  onChange={(e) =>
-                    setSelectedRate({ ...selectedRate, email: e.target.value })
-                  }
+                  onChange={(e) => {
+                    setEmailInput(!e.target.value.trim());
+                    setSelectedRate({ ...selectedRate, email: e.target.value });
+                  }}
                 />
               </div>
             </div>
@@ -46,24 +49,17 @@ function Modal({ setOpenModal, selectedRate, setSelectedRate }) {
                   class="form-control"
                   value={selectedRate.rate}
                   step={0.1}
+                  min={0.1}
                   onChange={(e) => {
+                    setRateInput(!e.target.value.trim());
                     setSelectedRate({ ...selectedRate, rate: e.target.value });
                   }}
                 />
               </div>
             </div>
-            {/* <div class="mb-3 form-check">
-              <input
-                type="checkbox"
-                class="form-check-input"
-                id="exampleCheck1"
-              />
-              <label class="form-check-label" for="exampleCheck1">
-                Check me out
-              </label>
-            </div> */}
             <button
               class="btn btn-primary"
+              disabled={!emailInput && !rateInput ? false : true}
               onClick={async () => {
                 await updateRates(selectedRate);
               }}
