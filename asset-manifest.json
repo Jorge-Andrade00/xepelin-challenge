@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/xepelin-challenge/static/css/main.50b283e9.css",
-    "main.js": "/xepelin-challenge/static/js/main.79c2f62e.js",
+    "main.js": "/xepelin-challenge/static/js/main.31dc6f46.js",
     "static/media/xepelin-logo-2.jpeg": "/xepelin-challenge/static/media/xepelin-logo-2.c926f1bee2e6ee56ca4a.jpeg",
     "index.html": "/xepelin-challenge/index.html",
     "main.50b283e9.css.map": "/xepelin-challenge/static/css/main.50b283e9.css.map",
-    "main.79c2f62e.js.map": "/xepelin-challenge/static/js/main.79c2f62e.js.map"
+    "main.31dc6f46.js.map": "/xepelin-challenge/static/js/main.31dc6f46.js.map"
   },
   "entrypoints": [
     "static/css/main.50b283e9.css",
-    "static/js/main.79c2f62e.js"
+    "static/js/main.31dc6f46.js"
   ]
 }
